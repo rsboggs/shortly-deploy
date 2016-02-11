@@ -47,8 +47,8 @@ module.exports = function(grunt) {
     processhtml: {
       dist:{
         files: {
-          'public/dist/layout.ejs': ['views/layout.ejs'],
-          'public/dist/index.ejs': ['views/index.ejs']
+          'views/layout.ejs': ['views/layout.ejs'],
+          'views/index.ejs': ['views/index.ejs']
         }
       }
     },
@@ -117,13 +117,14 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['processhtml','concat', 'uglify', 'cssmin', 'eslint', 'mochaTest', 'nodemon', 'watch'
+  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', 'mochaTest', 'nodemon', 'watch'
   ]);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
       grunt.task.run([ 'shell' ]);
+      grunt.task.run([ 'processhtml' ]);
       grunt.task.run([ 'build' ]);
     } else {
       grunt.task.run([ 'server-dev' ]);
