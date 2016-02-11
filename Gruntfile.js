@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
-        command: ['npm install']
+        command: 'npm install'
       }
     },
   });
@@ -127,6 +127,7 @@ module.exports = function(grunt) {
       grunt.task.run([ 'build' ]);
     } else {
       grunt.task.run([ 'server-dev' ]);
+
     }
   });
 
