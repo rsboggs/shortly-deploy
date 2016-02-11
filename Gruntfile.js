@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
-
+        command: ['npm install']
       }
     },
   });
@@ -102,12 +102,12 @@ module.exports = function(grunt) {
   });
 
 
-  grunt.registerTask('upload', function(n) {
-    if (grunt.option('prod')) {
-      // add your production server task here
-    }
-    grunt.task.run([ 'server-dev' ]);
-  });
+  // grunt.registerTask('upload', function(n) {
+  //   if (grunt.option('prod')) {
+  //     // add your production server task here
+  //   }
+  //   grunt.task.run([ 'server-dev' ]);
+  // });
 
   ////////////////////////////////////////////////////
   // Main grunt tasks
@@ -117,12 +117,14 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', 'mochaTest','processhtml','watch'
+  grunt.registerTask('build', ['processhtml','concat', 'uglify', 'cssmin', 'eslint', 'mochaTest', 'nodemon', 'watch'
   ]);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
+      grunt.task.run([ 'shell' ]);
+      grunt.task.run([ 'build' ]);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
