@@ -17,6 +17,7 @@ db.users.methods.comparePassword = function(attemptedPassword, callback) {
   });
 };
 
+
 var User = db.mongoose.model('User', db.users);
 
 module.exports = User;
