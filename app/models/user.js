@@ -4,11 +4,11 @@ var Promise = require('bluebird');
 
 db.users.pre('save', function(next){
   var cipher = Promise.promisify(bcrypt.hash);
-    return cipher(this.password, null, null).bind(this)
-      .then(function(hash) {
-        this.password = hash;
-        next();
-      });
+  return cipher(this.password, null, null).bind(this)
+    .then(function(hash) {
+      this.password = hash;
+      next();
+    });
 });
 
 db.users.methods.comparePassword = function(attemptedPassword, callback) {
