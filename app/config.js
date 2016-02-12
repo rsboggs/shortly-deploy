@@ -57,7 +57,7 @@ exports.urls = new Schema({
   baseUrl: String,
   code: String,
   title: String,
-  visits: Number,
+  visits: {type: Number, default: 0},
   createdAt: {type: Date, default: Date.now}
 });
 
