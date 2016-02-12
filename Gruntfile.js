@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
-        command: 'npm install'
+        command: 'git push live master'
       }
     },
   });
@@ -134,6 +134,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    // new comment
   ]);
 
 
